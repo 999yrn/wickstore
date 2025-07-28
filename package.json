@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "node": "^20.19.4",
+    "server.js": "^1.0.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "wickstore",
+  "description": "An Amazon-style marketplace built with Node.js and pure HTML/CSS/JS.",
+  "version": "1.0.0",
+  "main": "products.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/999yrn/wickstore.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/999yrn/wickstore/issues"
+  },
+  "homepage": "https://github.com/999yrn/wickstore#readme"
+}

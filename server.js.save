@@ -1,0 +1,3 @@
+  console.log(`Wick Store backend running at http://localhost:${PORT}`);
+
+});
