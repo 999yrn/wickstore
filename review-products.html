@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin – Review Products</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+<header>
+  <h1 class="logo">Wik Admin Panel – Product Review</h1>
+</header>
+
+<main>
+  <h2>Pending Product Listings</h2>
+  <div id="reviewContainer" class="grid"></div>
+</main>
+
+<script>
+  async function loadPending() {
+    const res = await fetch('/api/products/pending');
+    const pending = await res.json();
+    const container = document.getElementById('reviewContainer');
+    container.innerHTML = '';
+    pending.forEach((product, index) => {
+      container.innerHTML += `
+      <div class="product-card">
+        <h4>${product.name}</h4>
+        <p>Price: $${product.price}</p>
+        <img src="${product.image}" width="150" alt="${product.name}" />
+        <p>Seller: ${product.sellerEmail}</p>
+        <button onclick="updateStatus(${index}, 'Approved')">✅ Approve</button>
+        <button onclick="updateStatus(${index}, 'Rejected')">❌ Reject</button>
+      </div>`;
+    });
+  }
+
+  async function updateStatus(index, status) {
+    const res = await fetch('/api/products/update-status', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ index, status }),
+    });
+    const data = await res.json();
+    alert(data.message);
+    loadPending();
+  }
+
+  loadPending();
+</script>
+</body>
+</html>
